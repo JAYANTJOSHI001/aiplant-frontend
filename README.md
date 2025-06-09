@@ -105,6 +105,7 @@ The application follows a client-server architecture:
 3. Get AI-generated answers to your questions.
 
 ## Project Structure
+```plaintext
 aiplanet/
 ├── backend/
 │   ├── app/
@@ -123,6 +124,7 @@ aiplanet/
 │   │   └── App.js - Main application component
 │   └── package.json - JavaScript dependencies
 └── README.md - Project documentation
+```
 
 This implementation provides a complete solution for the AI-powered PDF question answering application based on the requirements and design provided. The application allows users to upload PDF documents, ask questions about their content, and receive AI-generated answers.
 
