@@ -61,7 +61,6 @@ const HomePage = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', boxShadow:'initial' }}>
-      {/* Left Side Panel */}
       <Box
         sx={{
           width: '100%',
@@ -93,8 +92,6 @@ const HomePage = () => {
           <UploadButton onUploadSuccess={handleUploadSuccess} />
         </Box>
       </Box>
-
-      {/* Right Chat Panel */}
       <Box
         sx={{
           flexGrow: 1,

@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# AI Planet PDF QA Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack application that allows users to upload PDF documents and ask questions about their content using AI.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Upload PDF documents
+- Ask questions about the content of uploaded PDFs
+- Get AI-generated answers based on the document content
+- Simple and intuitive user interface
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend
+- FastAPI - Python web framework
+- SQLAlchemy - ORM for database operations
+- LlamaIndex/LangChain - For document processing and question answering
+- PyMuPDF - For PDF text extraction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Backend Repository
+You can find the backend code here: [Backend Repository](https://github.com/JAYANTJOSHI001/aiplanet-backend)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend
+- React.js - JavaScript library for building user interfaces
+- Material-UI - React component library
+- Axios - HTTP client for API requests
 
-### `npm run build`
+## Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
+- Python 3.8+
+- Node.js 14+
+- npm 6+
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend Setup
+1. Navigate to the backend directory:
+```plaintext
+cd backend
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Create a virtual environment:
+```plaintext
+python -m venv venv
+```
 
-### `npm run eject`
+3. Activate the virtual environment:
+- Windows:
+  ```
+  venv\Scripts\activate
+  ```
+- macOS/Linux:
+  ```
+  source venv/bin/activate
+  ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Install dependencies:
+```plaintext
+pip install -r requirements.txt
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Run the server:
+```plaintext
+uvicorn main:app --reload
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Frontend Setup
+1. Navigate to the frontend directory:
+```plaintext
+cd frontend
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Install dependencies:
+```plaintext
+npm install
+```
 
-## Learn More
+3. Start the development server:
+```plaintext
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API Documentation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The API documentation is available at `http://localhost:8000/docs` when the backend server is running.
 
-### Code Splitting
+### Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `POST /documents/` - Upload a PDF document
+- `GET /documents/` - Get a list of uploaded documents
+- `POST /chat/ask` - Ask a question about a document
 
-### Analyzing the Bundle Size
+## Architecture
+The application follows a client-server architecture:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. The frontend (React) provides the user interface for uploading documents and asking questions.
+2. The backend (FastAPI) handles document processing, storage, and question answering.
+3. When a document is uploaded, it's stored on the server and indexed for efficient querying.
+4. When a question is asked, the backend uses LlamaIndex to search the document and generate an answer.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Usage
+1. Upload a PDF document by clicking the "Upload" button and selecting the desired file.
+2. Ask questions about the content of the uploaded PDF by typing them in the input field and clicking the "Ask" button.
+3. Get AI-generated answers to your questions.
 
-### Advanced Configuration
+## Project Structure
+aiplanet/
+├── backend/
+│   ├── app/
+│   │   ├── main.py - FastAPI application
+│   │   ├── models.py - Database models
+│   │   ├── database.py - Database connection
+│   │   ├── routers/ - API endpoints
+│   │   └── services/ - Business logic
+│   └── requirements.txt - Python dependencies
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/ - Reusable UI components
+│   │   ├── pages/ - Application pages
+│   │   ├── services/ - API client
+│   │   └── App.js - Main application component
+│   └── package.json - JavaScript dependencies
+└── README.md - Project documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This implementation provides a complete solution for the AI-powered PDF question answering application based on the requirements and design provided. The application allows users to upload PDF documents, ask questions about their content, and receive AI-generated answers.
 
-### Deployment
+The backend uses FastAPI with LlamaIndex for document processing and question answering, while the frontend uses React with Material-UI for a clean and intuitive user interface that matches the provided design.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
